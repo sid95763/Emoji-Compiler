@@ -1,0 +1,380 @@
+{
+  "jokes": {
+    "missing_semicolon": {
+      "emoji": "✂️",
+      "name": "Missing Semicolon",
+      "fix": "Add a semicolon ';' to terminate the statement.",
+      "beginner": "In C++, statements are like sentences. Without a semicolon ';' at the end, the compiler doesn't know where your instruction stops!",
+      "level_0": [
+        "Expected ';' at the end of this statement.",
+        "Statement requires a terminating semicolon before the next token.",
+        "Syntax error: Missing semicolon ';' after expression.",
+        "Compiler reached end of statement without finding expected ';'."
+      ],
+      "level_1": [
+        "Your line never ended. Like a bad movie. Add ';'",
+        "Left the compiler hanging. It needs closure. Add ';'",
+        "Statement ran off the cliff without its semicolon brakes.",
+        "A line without a semicolon is an unsolved mystery.",
+        "Ghosted the compiler at the end of the line. Add ';'"
+      ],
+      "level_2": [
+        "You had one job: press the key next to 'L'.",
+        "Transistors ran billions of cycles just to find one missing pixel.",
+        "This line is rambling like your uncle at Thanksgiving. Cap it with ';'",
+        "Did semicolons get canceled while I was compiling? Put it back.",
+        "Even your keyboard is embarrassed by this omission. Add ';'"
+      ]
+    },
+    "undeclared_variable": {
+      "emoji": "👻",
+      "name": "Undeclared Variable",
+      "fix": "Declare this identifier with its data type before using it.",
+      "beginner": "You're trying to use a variable that the computer doesn't know yet! You must declare it first, like 'int score = 0;', so memory is allocated.",
+      "level_0": [
+        "Identifier is undeclared in this scope.",
+        "Symbol used before declaration. Define with a type first.",
+        "Variable has no declaration in the current scope.",
+        "Unknown name: declare type and variable before referencing."
+      ],
+      "level_1": [
+        "This identifier doesn't exist. You're texting a ghost. Declare it.",
+        "Who is this mystery variable? It skipped the declaration line.",
+        "You called a name that isn't on the guest list.",
+        "Trying to spend memory you never declared in your account.",
+        "A variable showed up with no birth certificate. Declare it."
+      ],
+      "level_2": [
+        "Summoning entities from the void? Declare it or call an exorcist.",
+        "Imaginary variables don't compile in this dimension. Give it a type.",
+        "You're treating this variable like a celebrity you never actually met.",
+        "Did you forget to introduce this variable to the compiler first?",
+        "Zero declaration, pure confidence. The compiler is not convinced."
+      ]
+    },
+    "type_mismatch": {
+      "emoji": "🧩",
+      "name": "Type Mismatch",
+      "fix": "Ensure variable and value data types match or cast explicitly.",
+      "beginner": "You are trying to fit the wrong kind of data into a variable (like words into a number box). Make sure the types match!",
+      "level_0": [
+        "Incompatible types in assignment or initialization.",
+        "Cannot convert source type to target type implicitly.",
+        "Type conflict: expected matching data types.",
+        "Invalid assignment between incompatible types."
+      ],
+      "level_1": [
+        "Square peg, round hole, very confused compiler.",
+        "These two types speak completely different languages.",
+        "Tried to fit text where a number lives.",
+        "These types swiped left on each other. Check compatibility.",
+        "Oil and water mix better than these two types."
+      ],
+      "level_2": [
+        "Forcing types together like mismatched socks on laundry day.",
+        "The compiler filed for an immediate annulment on these types.",
+        "Trying to shove an entire string into an integer's locker.",
+        "Type safety is law here, and you just got pulled over.",
+        "These types have irreconcilable differences. Cast or change them."
+      ]
+    },
+    "missing_include": {
+      "emoji": "📦",
+      "name": "Missing Include",
+      "fix": "Add the appropriate #include header at the top of the file.",
+      "beginner": "C++ keeps standard tools in library packages. If you want to use cout or vector, add '#include <iostream>' at the very top!",
+      "level_0": [
+        "Header file required for this standard library symbol.",
+        "Symbol definition missing. Include corresponding header.",
+        "Unresolved standard function. Add header directive.",
+        "Missing header dependency at top of file."
+      ],
+      "level_1": [
+        "Ordered cout but forgot to add <iostream> to the cart.",
+        "Standard library tools weren't delivered to the job site.",
+        "You forgot to invite the header file to the compile party.",
+        "Using functions with an empty toolbox. Include the header.",
+        "You called standard I/O without dialing the area code."
+      ],
+      "level_2": [
+        "Like ordering IKEA furniture and burning the instructions first.",
+        "The compiler knows what you want, but you refused to import it.",
+        "Expected the standard library to appear by telepathy. Include it.",
+        "Your code is shopping with an empty cart. Add the header.",
+        "Even the compiler can't compile tools that were never included."
+      ]
+    },
+    "missing_return": {
+      "emoji": "🏃",
+      "name": "Missing Return",
+      "fix": "Add a return statement matching the function's return type.",
+      "beginner": "Your function promised to return a value (like an 'int'), but reached the end without giving anything back. Add 'return 0;'!",
+      "level_0": [
+        "Control reaches end of non-void function without return.",
+        "Non-void function must return an explicit value.",
+        "Missing return statement at end of function body.",
+        "Expected return value matching function signature."
+      ],
+      "level_1": [
+        "Your function promised a value and just ran away.",
+        "Ghosting the caller is rude. Return what you promised.",
+        "The caller is holding its hands out, waiting forever.",
+        "Function reached the end credits without finishing the plot.",
+        "Promised an int, returned pure air. Add a return statement."
+      ],
+      "level_2": [
+        "Your function took the arguments and entered witness protection.",
+        "Returning undefined garbage is like paying bills with Monopoly cash.",
+        "The audience is still waiting for the punchline of this function.",
+        "Non-void function dipped out the back door without paying.",
+        "Zero return value, maximum disappointment from the caller."
+      ]
+    },
+    "unused_variable": {
+      "emoji": "🗑️",
+      "name": "Unused Variable",
+      "fix": "Remove the variable or use it in your program logic.",
+      "beginner": "You declared this variable in memory, but never used it anywhere in your code. It's safe, but removing it keeps your code clean!",
+      "level_0": [
+        "Variable declared but never referenced in function scope.",
+        "Unused variable allocation detected.",
+        "Variable is defined but its value is never read.",
+        "Redundant declaration: symbol has no usage."
+      ],
+      "level_1": [
+        "Declared this variable and left it on read forever.",
+        "This variable is sitting in the corner, wondering why.",
+        "Allocated RAM just to abandon it immediately.",
+        "A lonely variable with big dreams and zero references.",
+        "You gave this variable life, then ignored its existence."
+      ],
+      "level_2": [
+        "Giving RAM existential dread for sport? Delete this variable.",
+        "This variable has zero references, zero calls, zero purpose.",
+        "Marie Kondo is staring at this variable with deep disappointment.",
+        "Why reserve memory just to leave it collecting virtual dust?",
+        "Recycle bin is ready for this useless declaration."
+      ]
+    },
+    "segfault": {
+      "emoji": "💥",
+      "name": "Segmentation Fault",
+      "fix": "Check for null pointers, out-of-bounds indices, or dangling references.",
+      "beginner": "Your code tried to read or write memory that doesn't exist or is forbidden (like a nullptr or past the end of an array). The OS stopped the program to protect the system!",
+      "level_0": [
+        "SIGSEGV: Memory access violation at unmapped address.",
+        "Process terminated due to invalid pointer dereference.",
+        "Segmentation fault: attempted memory read/write out of bounds.",
+        "Segmentation violation: invalid memory address referenced."
+      ],
+      "level_1": [
+        "You touched memory that wasn't yours. The OS has questions.",
+        "Null pointer dereference. You called a phone with zero digits.",
+        "Stepped outside the sandbox. The OS pressed the emergency stop.",
+        "Memory boundary crossed. Security escorted your code out.",
+        "Knocked on memory address 0x0. Nobody lives there."
+      ],
+      "level_2": [
+        "Raided a stranger's memory fridge and got tackled by the kernel.",
+        "Welcome to address 0x0. Population: zero. Consequence: instant death.",
+        "The OS slammed the eject button on your process with extreme prejudice.",
+        "Diving headfirst into null pointers like it's an Olympic sport.",
+        "Kernel panic avoided only by terminating your misbehaved process."
+      ]
+    },
+    "infinite_loop": {
+      "emoji": "♾️",
+      "name": "Infinite Loop",
+      "fix": "Update the loop counter or ensure the termination condition is met.",
+      "beginner": "Your loop never finishes because its condition is always true. Make sure you update your loop variable (like 'i++' or 'count++') inside the loop!",
+      "level_0": [
+        "Time limit exceeded: loop condition never evaluated to false.",
+        "Process execution timed out. Check loop termination.",
+        "Loop boundary condition never reached within time limit.",
+        "Infinite execution detected: verify iteration counter."
+      ],
+      "level_1": [
+        "Your loop is in a committed relationship that never ends.",
+        "Hamster wheel spinning at maximum speed. Check exit condition.",
+        "Time limit reached. That while-loop broke all its promises.",
+        "Round and round we go! The CPU had to pull the plug.",
+        "The loop condition swore it would terminate, but lied."
+      ],
+      "level_2": [
+        "Some say this while-loop is still spinning across the multiverse.",
+        "Loop condition is more stubborn than a toddler refusing vegetables.",
+        "Your CPU fans just spun up into low-earth orbit. Stop the loop.",
+        "Heat death of the universe arrives before this loop finishes.",
+        "Socrates himself couldn't persuade this condition to turn false."
+      ]
+    },
+    "division_by_zero": {
+      "emoji": "➗",
+      "name": "Division by Zero",
+      "fix": "Ensure the denominator is non-zero before dividing.",
+      "beginner": "Dividing by zero is mathematically impossible and crashes the computer immediately. Always verify the bottom number is not zero!",
+      "level_0": [
+        "SIGFPE: Arithmetic exception caused by division by zero.",
+        "Attempted division by zero in arithmetic expression.",
+        "Floating point / integer division by zero is undefined."
+      ],
+      "level_1": [
+        "Divided by zero and opened a black hole in the CPU.",
+        "Math itself threw its hands up and left the room.",
+        "Cannot split cookies among zero friends. Check divisor."
+      ],
+      "level_2": [
+        "Pythagoras just spun in his grave and tripped the circuit breaker.",
+        "Dividing by zero? Do you want to rip the fabric of space-time?",
+        "The CPU politely requested that you reconsider your arithmetic."
+      ]
+    },
+    "brace_mismatch": {
+      "emoji": "🧱",
+      "name": "Brace Mismatch",
+      "fix": "Ensure every opening brace '{' has a matching closing brace '}'.",
+      "beginner": "Braces must always be balanced in pairs '{' and '}'. Count them up to make sure none were forgotten!",
+      "level_0": [
+        "Syntax error: unmatched closing or opening brace.",
+        "Expected '}' before end of file or declaration."
+      ],
+      "level_1": [
+        "Every '{' needs a partner. Right now, one is painfully single.",
+        "Braces having a custody battle. One went completely missing.",
+        "Your curly braces are leaning like the Tower of Pisa."
+      ],
+      "level_2": [
+        "More unbalanced than an all-nighter powered by quadruple espresso.",
+        "The compiler doesn't know where main() begins or reality ends.",
+        "Pair up your braces like shoes before the whole thing falls apart."
+      ]
+    },
+    "general_error": {
+      "emoji": "🔥",
+      "name": "Compiler Error",
+      "fix": "Inspect the syntax on this line and check preceding lines.",
+      "beginner": "The compiler got stuck on this line because the syntax doesn't follow C++ rules. Check the highlighted token and punctuation!",
+      "level_0": [
+        "Compilation error at line location.",
+        "Syntax error encountered during parsing."
+      ],
+      "level_1": [
+        "The compiler stopped here and made a puzzled face.",
+        "Speed bump detected on the road to binary glory.",
+        "The syntax police flagged this line for a quick inspection."
+      ],
+      "level_2": [
+        "The compiler looked at this line and questioned free will.",
+        "Even the strictest LLVM optimizers are baffled right now.",
+        "Grab some coffee. Let's fix this line before GCC gives up."
+      ]
+    },
+    "general_warning": {
+      "emoji": "⚠️",
+      "name": "Compiler Warning",
+      "fix": "Review this pattern to prevent unintended runtime behavior.",
+      "beginner": "Your code runs, but the compiler spotted a risky pattern that might lead to bugs later. It's a friendly reminder!",
+      "level_0": [
+        "Compiler warning: suspicious construct detected.",
+        "Code compiled but contains potential pitfalls."
+      ],
+      "level_1": [
+        "The compiler let this slide, but gave you a side-eye.",
+        "A yellow card from the compiler referee. Still in the game.",
+        "Works today, might come back to bite you tomorrow."
+      ],
+      "level_2": [
+        "The compiler signed off, but it will remember this betrayal.",
+        "This warning is a blinking check-engine light for your code.",
+        "Passed by the skin of its teeth. Clean it before it bites."
+      ]
+    },
+    "general_note": {
+      "emoji": "💡",
+      "name": "Compiler Note",
+      "fix": "Check previous declaration or header context.",
+      "beginner": "This is a helpful hint showing where the identifier or function was originally declared.",
+      "level_0": [
+        "Contextual note providing additional declaration information."
+      ],
+      "level_1": [
+        "A helpful breadcrumb left behind by the compiler.",
+        "The compiler left a sticky note here to help solve the case."
+      ],
+      "level_2": [
+        "Free advice from the compiler. Take it while it's offering."
+      ]
+    }
+  },
+  "phase_tags": {
+    "lexing": {
+      "level_0": "Phase: Lexing (Tokenization)",
+      "level_1": "Caught at the lexing stage 🔤",
+      "level_2": "Couldn't even make it past lexing 🤦‍♂️"
+    },
+    "parsing": {
+      "level_0": "Phase: Parsing (Syntax)",
+      "level_1": "Caught at the parsing stage 🧩",
+      "level_2": "Grammar annihilated at parsing 💥"
+    },
+    "semantic": {
+      "level_0": "Phase: Semantic Analysis",
+      "level_1": "Tripped in semantic analysis 🧠",
+      "level_2": "Semantic logic broke the universe 🌀"
+    },
+    "optimization": {
+      "level_0": "Phase: Optimization",
+      "level_1": "Flagged during optimization ⚡",
+      "level_2": "Optimizer laughed and gave up 🗑️"
+    },
+    "assembly": {
+      "level_0": "Phase: Assembly & Linking",
+      "level_1": "Stumbled in assembly & linking ⚙️",
+      "level_2": "Assembler filed an immediate protest 🔨"
+    }
+  },
+  "mascot_dialogue": {
+    "idle": {
+      "level_0": ["Monitoring editor.", "Ready to compile.", "Syntax checker standby.", "Standing by."],
+      "level_1": ["Just floating by! 🐛", "Type away, human!", "I eat bugs for breakfast.", "Watching your curly braces."],
+      "level_2": ["Don't break anything today.", "I smell a segfault brewing...", "Careful with those pointers!", "My antennae are tingling..."]
+    },
+    "happy": {
+      "level_0": ["Build succeeded: 0 errors.", "All compiler phases passed.", "Clean binary generated.", "Exit code 0."],
+      "level_1": ["Zero errors! You're a wizard! 🏆", "Clean build! Confetti time! 🎉", "Passed all 5 stages cleanly!", "Not a single bug harmed! ✨"],
+      "level_2": ["Wait... it actually compiled?! 🤯", "Miracle! No red squigglies today!", "Did you copy-paste this? Clean build!", "Call the press! 0 errors! 🚀"]
+    },
+    "panic": {
+      "level_0": ["Diagnostics flagged during compilation.", "Build failed with errors.", "Review error line markers.", "Syntax error detected."],
+      "level_1": ["Uh oh! Red lines detected! 🚨", "The compiler had a hiccup! 💥", "Missing semicolon spotted! ✂️", "Don't panic! Check the fix!"],
+      "level_2": ["WHAT HAVE YOU DONE?! 😱", "MY EYES! The compiler is crying!", "That syntax hurt my antennae! 🔥", "Emergency stop! Red alert! 🚒"]
+    },
+    "segfault": {
+      "level_0": ["Runtime failure: SIGSEGV invalid pointer.", "Memory access violation detected.", "Process terminated unexpectedly.", "Core dumped at unmapped address."],
+      "level_1": ["Oof! Touched forbidden memory! 💥", "Null pointer crash! Watch your step!", "SIGSEGV! The OS hit eject!", "Memory went poof! 👻"],
+      "level_2": ["KABOOM! You nuked the memory! 💥", "Address 0x0 sends its regards! 💀", "Kernel panic in 3... 2... 1... 💣", "Forbidden memory tastes like pain! 🚑"]
+    },
+    "sleepy": {
+      "level_0": ["System idle for 60 seconds.", "Waiting for user input.", "Compiler inactive.", "Standby mode."],
+      "level_1": ["*yawn* Anyone home? zzz...", "Taking a quick power nap... 😴", "Zzz... wake me on compile...", "Editor has been quiet... 💤"],
+      "level_2": ["Zzz... did you fall asleep too?", "Are you programming or meditating? 😴", "Wake me up before you segfault...", "Even my antennae are asleep... 💤"]
+    },
+    "laughing": {
+      "level_0": ["Warning logged.", "Non-standard construct.", "Advisory notice.", "Pattern flagged."],
+      "level_1": ["Haha! Classic typo! 😂", "Good one! Check that line! 🤭", "Creative way to fail! 😸", "Puns compile faster than code!"],
+      "level_2": ["BAHAHAHA! What is that line?! 🤣", "Even GCC is wheezing right now! 💀", "Did a cat walk on your keyboard?! 🐱", "A masterpiece of syntax errors! 🎭"]
+    }
+  },
+  "complexity_jokes": {
+    "nested_loop": {
+      "level_0": "Deeply nested loop structure detected (depth 3+). Consider algorithmic refactoring.",
+      "level_1": "Triple loop! Your CPU is breaking a sweat! 🐢",
+      "level_2": "Nesting depth 3?! Are you trying to heat your room? 🔥"
+    },
+    "recursion": {
+      "level_0": "Branching recursion detected. Time complexity may be exponential.",
+      "level_1": "Branching recursion! Call stack gymnastics! 🎪",
+      "level_2": "Exponential recursion! Say goodbye to your RAM! 💥"
+    }
+  }
+}
