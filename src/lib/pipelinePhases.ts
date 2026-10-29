@@ -1,4 +1,4 @@
-import type { ErrorType } from '../types/compiler';
+ import type { ErrorType } from '../types/compiler';
 
 /**
  * 5 Standard Compilation Pipeline Stages

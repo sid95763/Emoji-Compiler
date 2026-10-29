@@ -970,6 +970,51 @@ body {
   padding: 20px 0;
 }
 
+.console-compiling-state {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 24px 0;
+  font-family: var(--font-mono);
+}
+
+.compiling-pulse-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(0, 255, 102, 0.2);
+  border-top-color: var(--accent-neon);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+.compiling-heading {
+  color: var(--accent-neon);
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.compiling-stage-indicator, .compiling-subtext {
+  font-size: 11.5px;
+  color: var(--text-dim);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.compiling-phase-badge {
+  background: rgba(0, 255, 102, 0.12);
+  border: 1px solid rgba(0, 255, 102, 0.3);
+  color: var(--accent-neon);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
 /* Error Rows */
 .errors-pane {
   padding: 12px;

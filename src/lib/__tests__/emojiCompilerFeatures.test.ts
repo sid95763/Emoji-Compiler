@@ -4,6 +4,8 @@ import { tokenizeCpp } from '../cppLexer';
 import { estimateComplexity } from '../complexityAnalyzer';
 import { checkAchievements, getInitialUserStats } from '../../data/achievements';
 import { pickMascotSpeech } from '../../app/store/emojiCompilerStore';
+import { CompilerService } from '../compilerService';
+import { samplePrograms } from '../../data/samplePrograms';
 
 describe('1. Compilation Pipeline View', () => {
   it('maps lexing errors correctly', () => {
@@ -147,5 +149,61 @@ describe('6. Code Complexity Analyzer Heuristics', () => {
 }`;
     const res = estimateComplexity(code, 1);
     expect(res.notation).toBe('O(log n)');
+  });
+});
+
+describe('7. Compiler Service & Output Execution', () => {
+  it('executes clean programs without getting stuck and produces authentic output', async () => {
+    const sample5 = samplePrograms.find((s) => s.id === 'nested-complexity')!;
+    const res5 = await CompilerService.compileAndRun(sample5.code, '', 'c++17', 1);
+    expect(res5.success).toBe(true);
+    expect(res5.stdout).toContain('Total operations: 125000');
+    expect(res5.exitCode).toBe(0);
+
+    const sample6 = samplePrograms.find((s) => s.id === 'clean-program')!;
+    const res6 = await CompilerService.compileAndRun(sample6.code, '', 'c++17', 1);
+    expect(res6.success).toBe(true);
+    expect(res6.stdout).toContain('Terminal ready: Zero errors detected.');
+
+    const sample7 = samplePrograms.find((s) => s.id === 'two-sum')!;
+    const res7 = await CompilerService.compileAndRun(sample7.code, '', 'c++17', 1);
+    expect(res7.success).toBe(true);
+    expect(res7.stdout).toContain('Found pair at indices: 0 and 1');
+  });
+
+  it('correctly catches lexing and parsing errors with diagnostics', async () => {
+    const sample1 = samplePrograms.find((s) => s.id === 'lexing-error')!;
+    const res1 = await CompilerService.compileAndRun(sample1.code, '', 'c++17', 1);
+    expect(res1.success).toBe(false);
+    expect(res1.diagnostics.length).toBeGreaterThan(0);
+
+    const sample2 = samplePrograms.find((s) => s.id === 'missing-semicolon')!;
+    const res2 = await CompilerService.compileAndRun(sample2.code, '', 'c++17', 1);
+    expect(res2.success).toBe(false);
+    expect(res2.diagnostics.length).toBeGreaterThan(0);
+    expect(res2.diagnostics[0].errorType).toBe('missing_semicolon');
+  });
+
+  it('correctly catches runtime errors (segfault)', async () => {
+    const sample4 = samplePrograms.find((s) => s.id === 'segfault-runtime')!;
+    const res4 = await CompilerService.compileAndRun(sample4.code, '', 'c++17', 1);
+    expect(res4.success).toBe(false);
+    expect(res4.isRuntimeError).toBe(true);
+    expect(res4.exitCode).toBe(139);
+    expect(res4.stderr).toContain('Segmentation fault');
+  });
+
+  it('evaluates custom user code with variables and cout correctly', async () => {
+    const customCode = `#include <iostream>
+using namespace std;
+int main() {
+    int a = 15;
+    int b = 25;
+    cout << "Sum is: " << a + b << endl;
+    return 0;
+}`;
+    const res = await CompilerService.compileAndRun(customCode, '', 'c++17', 1);
+    expect(res.success).toBe(true);
+    expect(res.stdout).toContain('Sum is: 40');
   });
 });

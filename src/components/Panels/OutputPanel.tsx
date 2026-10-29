@@ -29,6 +29,8 @@ export const OutputPanel: React.FC<Props> = ({ onSelectDiagnostic, onJumpToLine 
     pipelinePhaseFilter,
     setPipelinePhaseFilter,
     humorLevel,
+    isCompiling,
+    activeRunningStage,
   } = useEmojiCompilerStore();
 
   const [commentLineInput, setCommentLineInput] = useState<number>(1);
@@ -157,7 +159,16 @@ export const OutputPanel: React.FC<Props> = ({ onSelectDiagnostic, onJumpToLine 
         {/* CONSOLE */}
         {activeTab === 'console' && (
           <div className="console-pane">
-            {compileResult ? (
+            {isCompiling ? (
+              <div className="console-compiling-state">
+                <div className="compiling-pulse-spinner" />
+                <p className="compiling-heading">&gt; compiling and assembling through pipeline...</p>
+                <div className="compiling-stage-indicator">
+                  <span>Current phase: </span>
+                  <span className="compiling-phase-badge">{activeRunningStage || 'lexing'}</span>
+                </div>
+              </div>
+            ) : compileResult ? (
               <div className="console-stream">
                 <div className="stream-meta-line">
                   <span className={compileResult.success ? 'meta-success' : 'meta-error'}>
@@ -220,7 +231,13 @@ export const OutputPanel: React.FC<Props> = ({ onSelectDiagnostic, onJumpToLine 
               </div>
             )}
 
-            {filteredDiagnostics.length > 0 ? (
+            {isCompiling ? (
+              <div className="console-compiling-state">
+                <div className="compiling-pulse-spinner" />
+                <p className="compiling-heading">&gt; analyzing syntax, semantic trees and diagnostics...</p>
+                <span className="compiling-subtext">Phase: {activeRunningStage || 'lexing'}</span>
+              </div>
+            ) : filteredDiagnostics.length > 0 ? (
               <div className="errors-feed">
                 {filteredDiagnostics.map((d) => {
                   const isSelected = selectedDiagnosticId === d.id;
@@ -270,6 +287,29 @@ export const OutputPanel: React.FC<Props> = ({ onSelectDiagnostic, onJumpToLine 
                     </div>
                   );
                 })}
+              </div>
+            ) : compileResult && !compileResult.success ? (
+              <div className="errors-clean-state">
+                <p style={{ color: 'var(--sev-error)' }}>&gt; compilation or runtime error occurred.</p>
+                {compileResult.stderr && <pre className="stderr-text" style={{ marginTop: '8px' }}>{compileResult.stderr}</pre>}
+                {compileResult.compileOutput && <pre className="compile-output-text" style={{ marginTop: '8px' }}>{compileResult.compileOutput}</pre>}
+                <button
+                  type="button"
+                  style={{
+                    marginTop: '12px',
+                    background: 'rgba(255, 255, 255, 0.08)',
+                    border: '1px solid var(--border-subtle)',
+                    color: 'var(--text-main)',
+                    padding: '4px 10px',
+                    borderRadius: '4px',
+                    cursor: 'pointer',
+                    fontSize: '11px',
+                    fontFamily: 'var(--font-mono)',
+                  }}
+                  onClick={() => setActiveTab('console')}
+                >
+                  View in console tab →
+                </button>
               </div>
             ) : (
               <div className="errors-clean-state">

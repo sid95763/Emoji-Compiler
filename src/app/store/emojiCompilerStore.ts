@@ -234,19 +234,20 @@ export const useEmojiCompilerStore = create<EmojiCompilerState>((set, get) => ({
       lastRunTimestamp: Date.now(),
     });
 
-    // Animate stages lighting up in order
-    const stageSequence: PipelinePhase[] = ['lexing', 'parsing', 'semantic', 'optimization', 'assembly'];
-    let stageIndex = 0;
-    const stageInterval = setInterval(() => {
-      if (stageIndex < stageSequence.length) {
-        set({ activeRunningStage: stageSequence[stageIndex] });
-        stageIndex++;
-      }
-    }, 110);
-
+    let stageInterval: ReturnType<typeof setInterval> | null = null;
     try {
+      // Animate stages lighting up in order
+      const stageSequence: PipelinePhase[] = ['lexing', 'parsing', 'semantic', 'optimization', 'assembly'];
+      let stageIndex = 0;
+      stageInterval = setInterval(() => {
+        if (stageIndex < stageSequence.length) {
+          set({ activeRunningStage: stageSequence[stageIndex] });
+          stageIndex++;
+        }
+      }, 70);
+
       const result = await CompilerService.compileAndRun(code, stdin, standard, humorLevel);
-      clearInterval(stageInterval);
+      if (stageInterval) clearInterval(stageInterval);
 
       const hasErrors = result.diagnostics.length > 0;
       const isClean = !hasErrors && result.success;
@@ -336,13 +337,16 @@ export const useEmojiCompilerStore = create<EmojiCompilerState>((set, get) => ({
         const mascotMood: MascotState = isSegfault ? 'segfault' : 'panic';
         const errorSpeech = pickMascotSpeech(mascotMood, humorLevel);
 
+        // If diagnostics are present, open errors tab; otherwise show console to display compiler output
+        const targetTab: ActiveTab = result.diagnostics.length > 0 ? 'errors' : 'console';
+
         set({
           isCompiling: false,
           activeRunningStage: null,
           compileResult: result,
           diagnostics: result.diagnostics,
           selectedDiagnosticId: result.diagnostics[0]?.id || null,
-          activeTab: 'errors',
+          activeTab: targetTab,
           activeReaction: reaction,
           flashingLine: firstLine,
           assemblyCode: null,
@@ -356,12 +360,22 @@ export const useEmojiCompilerStore = create<EmojiCompilerState>((set, get) => ({
           set({ activeReaction: null, flashingLine: null });
         }, 2000);
       }
-    } catch {
-      clearInterval(stageInterval);
+    } catch (err: unknown) {
+      if (stageInterval) clearInterval(stageInterval);
+      const fallbackMsg = err instanceof Error ? err.message : 'Unknown compiler error occurred.';
       set({
         isCompiling: false,
         activeRunningStage: null,
         activeReaction: null,
+        compileResult: {
+          success: false,
+          stdout: '',
+          stderr: fallbackMsg,
+          compileOutput: `fatal: ${fallbackMsg}`,
+          exitCode: 1,
+          diagnostics: [],
+        },
+        activeTab: 'console',
       });
     }
   },
